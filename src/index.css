@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+:root {
+	font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+	color: #edf5ef;
+	background: #07100e;
+}
+
+* { box-sizing: border-box; }
+body {
+	min-width: 320px;
+	margin: 0;
+	background: radial-gradient(circle at 12% 8%, rgba(104, 150, 77, 0.18), transparent 27rem), linear-gradient(135deg, #07100e 0%, #0c1716 52%, #15140e 100%);
+}
+button { cursor: pointer; }
+.app-shell {
+	background-image: linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+	background-size: 28px 28px;
+}
+.app-frame { width: min(1440px, 100%); background: rgba(10, 20, 18, 0.88); border-inline: 1px solid rgba(181, 218, 148, 0.08); }
+.app-header, .bottom-nav { background: rgba(10, 20, 18, 0.94); border-color: rgba(181, 218, 148, 0.13); backdrop-filter: blur(18px); }
+.app-header { padding-inline: clamp(1rem, 3vw, 2.5rem); }
+.app-main { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.85fr); gap: 1rem; max-width: 1360px; margin: 0 auto; padding: clamp(1rem, 3vw, 2rem); }
+.camera-panel { grid-row: span 2; align-self: start; background: #020605; border-color: rgba(181, 218, 148, 0.18); box-shadow: 0 18px 50px rgba(0, 0, 0, 0.32); }
+.camera-panel video, .camera-panel canvas { object-fit: cover; }
+.camera-panel::after { position: absolute; inset: 0; border: 1px solid rgba(181, 218, 148, 0.1); border-radius: inherit; content: ""; pointer-events: none; }
+.scan-status { background: rgba(4, 12, 9, 0.82); color: #c7f2a4; border: 1px solid rgba(181, 218, 148, 0.28); backdrop-filter: blur(12px); }
+.live-indicator { color: #c7f2a4; background: rgba(139, 196, 91, 0.1); border: 1px solid rgba(139, 196, 91, 0.24); }
+.stat-card, .result-row { background: linear-gradient(145deg, rgba(27, 45, 37, 0.9), rgba(17, 28, 26, 0.9)); border-color: rgba(181, 218, 148, 0.12); }
+.stat-card-neutral { border-top-color: rgba(215, 231, 202, 0.45); }
+.stat-card-green { border-top-color: #8bc45b; }
+.stat-card-red { border-top-color: #ee806d; }
+.stat-card-amber { border-top-color: #e9b85d; }
+.results-panel { min-height: 0; padding-top: 0.25rem; }
+.result-row { transition: transform 160ms ease, border-color 160ms ease; }
+.result-row:hover { transform: translateY(-1px); border-color: rgba(181, 218, 148, 0.35); }
+.empty-state { border-color: rgba(181, 218, 148, 0.18); color: #8aa298; }
+.bottom-nav { position: sticky; margin-top: 1rem; }
+@media (max-width: 860px) { .app-main { grid-template-columns: 1fr; } .camera-panel { grid-row: auto; } }
+@media (max-width: 520px) { .app-header h1 { max-width: 170px; line-height: 1.25; } .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .camera-panel { aspect-ratio: 4 / 3; } }
